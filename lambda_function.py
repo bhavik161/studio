@@ -20,7 +20,8 @@ def get_network_settings():
     sggroups = ec2.describe_security_groups()
     lst_sgs=[]
     for sg in sggroups['SecurityGroups']:
-        lst_sgs.append(sg['GroupId'])
+        if 'default' in sg['GroupName']:
+            lst_sgs.append(sg['GroupId'])
     print(lst_sgs)
     
     return(vpcid, lst_subnets, lst_sgs)
