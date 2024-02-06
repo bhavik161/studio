@@ -1,5 +1,13 @@
+
+import sys
+from pip._internal import main
+
+main(['install', '-I', 'boto3', '--target', '/tmp/', '--no-cache-dir', '--disable-pip-version-check', '--upgrade'])
+sys.path.insert(0,'/tmp/')
+
 import json
 import boto3
+print(boto3.__version__)
 
 
 def get_iam_execution_role():
